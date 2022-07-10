@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import { Form } from 'components/Form';
 import { Contacts } from 'components/Contacts';
 import { Filter } from 'components/Filter';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Container, MainTitle, Title } from './App.styled';
 
 export class App extends Component {
+  
   state = {
     contacts: [],
     filter: '',
@@ -22,16 +24,16 @@ export class App extends Component {
     this.setState(({ contacts }) => {
       if (
         contacts.find(
-          contact => contact.name.toLowerCase() === name.toLowerCase()
+          contact => contact.name.toLowerCase() === name.toLowerCase()|| contact.number === number
         )
       ) {
-        alert(`${name} is already in contacts`);
-        return;
+        Notify.warning(`${name} is already in contacts`);
+      } else {
+        return {
+          contacts: [baseContact, ...contacts],
+        }
       }
-      return {
-        contacts: [baseContact, ...contacts],
-      };
-    });
+    })
   };
 
   onChangeFilter = e => {
@@ -46,6 +48,7 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalized)
     );
   };
+  
   deleteContacts = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),

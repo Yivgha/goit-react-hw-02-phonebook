@@ -9,6 +9,7 @@ export const FormContact = styled.form`
   border: 1px solid ${theme.colors.gray};
   width: 400px;
   margin-bottom: 30px;
+  background-color: ${theme.colors.green};
 `;
 
 export const Label = styled.label`
@@ -18,13 +19,14 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
-  color: ${theme.colors.gray};
+  color: ${theme.colors.title};
 `;
 
 export const InputContact = styled.input`
   padding: 5px;
   border-radius: 5px;
   margin-left: 10px;
+  width: auto;
 `;
 
 export const ButtonContact = styled.button`

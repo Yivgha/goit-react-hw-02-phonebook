@@ -9,7 +9,6 @@ export const TitleFilter = styled.h3`
   font-size: 16px;
   line-height: 1.71;
   letter-spacing: 0.03em;
-  color: ${theme.colors.title};
 `;
 export const InputFilter = styled.input`
   padding: 3px;
